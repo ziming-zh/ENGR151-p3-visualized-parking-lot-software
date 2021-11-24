@@ -9,11 +9,11 @@ set(CMAKE_CXX_FLAGS "-Werror -pedantic -Wall -Wextra -Wvla")
 
 # Find the OpenGL library (don't modify)
 find_package(OpenGL REQUIRED)
-include_directories(${{OPENGL_INCLUDE_DIR}})
+include_directories(${OPENGL_INCLUDE_DIR})
 
 # Find the GLUT library (don't modify)
 find_package(GLUT REQUIRED)
-include_directories(${{GLUT_INCLUDE_DIR}})
+include_directories(${GLUT_INCLUDE_DIR})
 
 # Build Part 1 of the project (add all of related files)
 add_executable(p3_part1 pms.cpp)
@@ -22,4 +22,4 @@ add_executable(p3_part1 pms.cpp)
 add_executable(p3_part2 ipa.cpp)
 
 # Link the OpenGL, GLUT and Maths library to your project (don't modify)
-target_link_libraries(p3_part2 ${{GLUT_LIBRARY}} ${{OPENGL_LIBRARY}} m)
+target_link_libraries(p3_part2 ${GLUT_LIBRARY} ${OPENGL_LIBRARY} m)
