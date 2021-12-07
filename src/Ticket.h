@@ -1,23 +1,45 @@
-//
-// Created by Ziming on 2021/12/5.
-// Changed by Ming on purpose on 2021/12/7 =)
-//
-#ifndef P3_TICKET_H
-#define P3_TICKET_H
+#ifndef __TICKET_H__
+#define __TICKET_H__
 
+#include <iostream>
+#include <string>
+#include <vector>
 
 class Ticket {
 public:
-    Ticket();
-    void calprice();
-    double getprice();
-    void putin(unsigned long long int in);
-    void putout(unsigned long long int out);
-    ~Ticket();
+    Ticket(unsigned int _vehicleType, float _arrivalTime, float _departureTime);
+    virtual ~Ticket() = 0;
+    virtual void printTicket() const = 0;
+
+protected:
+    unsigned int vehicleType;
+    float arrivalTime, departureTime;
+
 private:
-    unsigned long long int timein,timeout;
-    double unitprice,price;
 };
 
+class ArrivalTicket : public Ticket {
+public:
+    ArrivalTicket(unsigned int _vehicleType, float _arrivalTime, float _departureTime, std::string _guide);
+    ~ArrivalTicket() = default;
+    void printTicket() const;
 
-#endif //P3_TICKET_H
+private:
+    std::string guide; // Guide about how to find an empty slot.
+};
+
+class DepartureTicket : Ticket{
+public:
+    DepartureTicket(unsigned int _vehicleType, float _arrivalTime, float _departureTime);
+    ~DepartureTicket() = default;
+    void printTicket() const;
+    float getTotalPrice() const;
+
+private:
+    float calcTotalPrice() const;
+    static std::vector<float> unitPrices;
+    float totalTime; // Total time spent in the parking lot.
+    float totalPrice;
+};
+
+#endif
