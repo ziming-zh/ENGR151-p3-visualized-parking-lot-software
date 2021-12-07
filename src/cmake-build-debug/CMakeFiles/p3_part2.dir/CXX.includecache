@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.cpp
+GL/freeglut.h
+-
+Figure.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+vec.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+cmath
+-
+

@@ -2,6 +2,7 @@
 #include <stack>
 #include "Floor.h"
 #include "Plot.h"
+#include "Figure.h"
 using namespace std;
 int main() {
     /// create parking lot

@@ -4,14 +4,39 @@
 #include <GL/freeglut.h>
 #endif
 
+#include "Figure.h"
 void display() {
 
 	/* clear window */
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	/* draw scene */
-	glutWireTeapot(.5);
+//    class Rectangle r;
+//    r.setAnchor(Vec(.0,.0));
+//    r.set_p1(Vec(-.5,-.5));
+//    r.set_p2(Vec(.5,.5));
+//    r.Paint();
+//    r.rotate(0.5);
+//    r.rotate(-.5);
+//    r.draw();
+//	Circle cr(.25);
+//	cr.set_ori(Vec(0.5,0));
+//	cr.setAnchor(Vec(.0,.0));
+//	cr.Paint();
+//	cr.draw();
 
+//    Car c;
+//    c.zoom(0.5);
+//    c.rotate(0.5);
+//    c.move(Vec(0.5,0));
+//    c.draw();
+
+    UFO u;
+
+    u.draw();
+
+//    Spacecraft spc;
+//    spc.draw();
 	/* flush drawing routines to the window */
 	glFlush();
 

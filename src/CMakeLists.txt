@@ -19,7 +19,7 @@ include_directories(${GLUT_INCLUDE_DIR})
 add_executable(p3_part1 pms.cpp)
 
 # Build Part 2 of the project (add all of related files)
-add_executable(p3_part2 ipa.cpp)
+add_executable(p3_part2 ipa.cpp Figure.cpp)
 
 # Link the OpenGL, GLUT and Maths library to your project (don't modify)
 target_link_libraries(p3_part2 ${GLUT_LIBRARY} ${OPENGL_LIBRARY} m)

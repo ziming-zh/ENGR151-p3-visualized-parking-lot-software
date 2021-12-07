@@ -46,7 +46,8 @@ public:
     Vec operator<< (float angle)
     {
         float dist= sqrt(x*x+y*y);
-        float cur = atan(y/x)* 180.0/PI+angle;
+        float cur = atan(y/x)+angle;
+        if(x<0) cur+=PI;
         x=dist* cosf(cur);
         y=dist* sinf(cur);
         return Vec(x,y);
@@ -54,7 +55,8 @@ public:
     Vec operator>> (float angle)
     {
         float dist= sqrt(x*x+y*y);
-        float cur = atan(y/x)* 180.0/PI-angle;
+        float cur = atan(y/x)-angle;
+        if(x<0) cur+=PI;
         x=dist* cosf(cur);
         y=dist* sinf(cur);
         return Vec(x,y);
