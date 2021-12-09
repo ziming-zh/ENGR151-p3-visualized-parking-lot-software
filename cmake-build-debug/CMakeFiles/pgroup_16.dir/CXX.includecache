@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/Floor.cpp
+Floor.h
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/Floor.h
+
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/Floor.h
+
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/ipa.cpp
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/pms.cpp
+iostream
+-
+stack
+-
+Floor.h
+C:/Users/Ziming/Documents/group_9/pgroup-16/src/Floor.h
+

@@ -1,8 +1,0 @@
-CMAKE_PROGRESS_1 = 3
-CMAKE_PROGRESS_2 = 4
-CMAKE_PROGRESS_3 = 5
-<<<<<<< HEAD
-=======
-CMAKE_PROGRESS_4 = 6
->>>>>>> ziming_zhou
-
