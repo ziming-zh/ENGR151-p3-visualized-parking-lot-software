@@ -40,14 +40,14 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="pgroup_16" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pgroup_16" TARGET_NAME="pgroup_16" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pgroup_16" RUN_TARGET_NAME="pgroup_16">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="pgroup_16" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pgroup_16" TARGET_NAME="pgroup_16" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pgroup_16" RUN_TARGET_NAME="pgroup_16">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -63,6 +63,7 @@
       <workItem from="1638369387210" duration="3297000" />
       <workItem from="1638526684235" duration="322000" />
       <workItem from="1639015153616" duration="94000" />
+      <workItem from="1639036370851" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="Structure of class Floor established!&#10;Require the implementation of class Plot to further the realization process.">
       <created>1638370396781</created>
