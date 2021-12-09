@@ -5,6 +5,14 @@ CMakeFiles/p3_part2.dir/Figure.cpp.obj: \
  ../Figure.cpp \
  ../Figure.h \
  ../vec.h
+<<<<<<< HEAD
+=======
+CMakeFiles/p3_part2.dir/Vehicle.cpp.obj: \
+ ../Figure.h \
+ ../Vehicle.cpp \
+ ../Vehicle.h \
+ ../vec.h
+>>>>>>> ziming_zhou
 CMakeFiles/p3_part2.dir/ipa.cpp.obj: \
  ../Figure.h \
  ../ipa.cpp \

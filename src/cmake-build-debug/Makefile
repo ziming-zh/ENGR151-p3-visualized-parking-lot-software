@@ -165,6 +165,33 @@ Figure.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/Figure.cpp.s
 .PHONY : Figure.cpp.s
 
+<<<<<<< HEAD
+=======
+Vehicle.obj: Vehicle.cpp.obj
+.PHONY : Vehicle.obj
+
+# target to build an object file
+Vehicle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/Vehicle.cpp.obj
+.PHONY : Vehicle.cpp.obj
+
+Vehicle.i: Vehicle.cpp.i
+.PHONY : Vehicle.i
+
+# target to preprocess a source file
+Vehicle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/Vehicle.cpp.i
+.PHONY : Vehicle.cpp.i
+
+Vehicle.s: Vehicle.cpp.s
+.PHONY : Vehicle.s
+
+# target to generate assembly for a file
+Vehicle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/Vehicle.cpp.s
+.PHONY : Vehicle.cpp.s
+
+>>>>>>> ziming_zhou
 ipa.obj: ipa.cpp.obj
 .PHONY : ipa.obj
 
@@ -226,6 +253,12 @@ help:
 	@echo ... Figure.obj
 	@echo ... Figure.i
 	@echo ... Figure.s
+<<<<<<< HEAD
+=======
+	@echo ... Vehicle.obj
+	@echo ... Vehicle.i
+	@echo ... Vehicle.s
+>>>>>>> ziming_zhou
 	@echo ... ipa.obj
 	@echo ... ipa.i
 	@echo ... ipa.s

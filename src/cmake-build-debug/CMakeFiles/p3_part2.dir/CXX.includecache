@@ -16,6 +16,29 @@ C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
 vec.h
 C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
 
+<<<<<<< HEAD
+=======
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.cpp
+Vehicle.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.h
+vec.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+Figure.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+queue
+-
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/ipa.cpp
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+Figure.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+
+>>>>>>> ziming_zhou
 C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
 cmath
 -

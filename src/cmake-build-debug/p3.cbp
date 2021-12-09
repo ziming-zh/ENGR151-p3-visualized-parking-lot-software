@@ -136,6 +136,15 @@
 		<Unit filename="C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h">
 			<Option target="p3_part2"/>
 		</Unit>
+<<<<<<< HEAD
+=======
+		<Unit filename="C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.cpp">
+			<Option target="p3_part2"/>
+		</Unit>
+		<Unit filename="C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.h">
+			<Option target="p3_part2"/>
+		</Unit>
+>>>>>>> ziming_zhou
 		<Unit filename="C:/Users/Ziming/Desktop/P3/pgroup-16/src/ipa.cpp">
 			<Option target="p3_part2"/>
 		</Unit>

@@ -108,12 +108,20 @@ CMakeFiles/p3_part1.dir/clean:
 CMakeFiles/p3_part2.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\p3_part2.dir\build.make CMakeFiles/p3_part2.dir/build
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Ziming\Desktop\P3\pgroup-16\src\cmake-build-debug\CMakeFiles --progress-num=3,4,5 "Built target p3_part2"
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Ziming\Desktop\P3\pgroup-16\src\cmake-build-debug\CMakeFiles --progress-num=3,4,5,6 "Built target p3_part2"
+>>>>>>> ziming_zhou
 .PHONY : CMakeFiles/p3_part2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/p3_part2.dir/rule: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Ziming\Desktop\P3\pgroup-16\src\cmake-build-debug\CMakeFiles 3
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Ziming\Desktop\P3\pgroup-16\src\cmake-build-debug\CMakeFiles 4
+>>>>>>> ziming_zhou
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/p3_part2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Ziming\Desktop\P3\pgroup-16\src\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/p3_part2.dir/rule

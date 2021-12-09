@@ -6,3 +6,34 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
+=======
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+vec.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Floor.h
+Plot.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Plot.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Plot.h
+vec.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/pms.cpp
+iostream
+-
+stack
+-
+Floor.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Floor.h
+Plot.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Plot.h
+Figure.h
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.h
+
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/vec.h
+cmath
+-
+
+>>>>>>> ziming_zhou

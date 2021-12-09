@@ -9,6 +9,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/Ziming/Desktop/P3/pgroup-16/src/Figure.cpp" "C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/p3_part2.dir/Figure.cpp.obj"
+<<<<<<< HEAD
+=======
+  "C:/Users/Ziming/Desktop/P3/pgroup-16/src/Vehicle.cpp" "C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/p3_part2.dir/Vehicle.cpp.obj"
+>>>>>>> ziming_zhou
   "C:/Users/Ziming/Desktop/P3/pgroup-16/src/ipa.cpp" "C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/p3_part2.dir/ipa.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
