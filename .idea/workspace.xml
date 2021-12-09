@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5512902f-7bbd-4674-8e4c-031f1af105ce" name="Changes" comment="Structure of class Floor established!&#10;Require the implementation of class Plot to further the realization process." />
+    <list default="true" id="5512902f-7bbd-4674-8e4c-031f1af105ce" name="Changes" comment="Structure of class Floor established!&#10;Require the implementation of class Plot to further the realization process.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +22,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -39,11 +40,6 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="pgroup_16" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pgroup_16" TARGET_NAME="pgroup_16" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pgroup_16" RUN_TARGET_NAME="pgroup_16">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -66,6 +62,7 @@
       <workItem from="1638324015300" duration="85000" />
       <workItem from="1638369387210" duration="3297000" />
       <workItem from="1638526684235" duration="322000" />
+      <workItem from="1639015153616" duration="94000" />
     </task>
     <task id="LOCAL-00001" summary="Structure of class Floor established!&#10;Require the implementation of class Plot to further the realization process.">
       <created>1638370396781</created>
