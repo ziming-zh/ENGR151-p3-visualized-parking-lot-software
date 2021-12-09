@@ -6,6 +6,17 @@
 #define P3_VEC_H
 #include <cmath>
 #define PI  3.1415926535
+
+typedef struct _Unit{
+    int row;
+    int col;
+}unit;
+typedef struct _RGB{
+    int red;
+    int green;
+    int blue;
+}Rgb;
+
 class Vec {
 private:
     float x,y;

@@ -5,11 +5,18 @@
 
 #include <GL/freeglut.h>
 #include "Figure.h"
+#ifdef OPEN_GL
 void ColoredFig::Paint() {
     r = (float)rand() / (float)RAND_MAX;
     g = (float)rand() / (float)RAND_MAX;
     b = (float)rand() / (float)RAND_MAX;
 }
+void ColoredFig::ClearColor(){
+    r=1.0;
+    g=1.0;
+    b=1.0;
+}
+
 
 void Circle::move(Vec s) {
     ori=ori+s;
@@ -112,36 +119,36 @@ void Quad::zoom(float k) {
     p3=((p3-anchor)*k)+anchor;
     p4=((p4-anchor)*k)+anchor;
 }
-Polygon::Polygon(int num, Vec *p) {
+Polygon::Polygon(int num, Vec **p) {
     this->num=num;
     this->p=p;
 
 }
 void Polygon::move(Vec s) {
     for(int i = 0;i<num;i++){
-        p[i]=s+p[i];
+        (*p[i])=s+(*p[i]);
     }
 }
 
 void Polygon::draw() {
     glColor3f(r, g, b);
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_STRIP);
     for(int i = 0;i<num;i++){
-        glVertex2d(p[i].getX(),p[i].getY());
+        glVertex2d(p[i]->getX(),p[i]->getY());
     }
-    glVertex2d(p[0].getX(),p[0].getY());
+    //glVertex2d(p[0]->getX(),p[0]->getY());
     glEnd();
 }
 void Polygon::rotate(float angle) {
     for(int i  = 0;i<num;i++)
     {
-        p[i]=((p[i]-anchor)<<angle)+anchor;
+        *p[i]=((*p[i]-anchor)<<angle)+anchor;
     }
 }
 void Polygon::zoom(float k) {
     for(int i  = 0;i<num;i++)
     {
-        p[i]=((p[i]-anchor)*k)+anchor;
+        *p[i]=((*p[i]-anchor)*k)+anchor;
     }
 }
 
@@ -385,4 +392,61 @@ Spacecraft::Spacecraft(Vec anchor, float width, float height, float owidth) {
     sh[7]->Paint();
 
 }
+Teleported::Teleported(Vec anchor, float width, float height) {
+    this->anchor=anchor;
+    w=width;
+    h=height;
+    sh_num=1;
+    sh=new ColoredFig*[1];
+    sh[0]=new class Rectangle;
+    Vec p1=Vec(anchor.getX()-w/2,anchor.getY()-h/2);
+    Vec p2=Vec(anchor.getX()+w/2,anchor.getY()+h/2);
+    ((class Rectangle*)sh[0])->set_p1(p1);
+    ((class Rectangle*)sh[0])->set_p2(p2);
+    sh[0]->Paint();
+}
+ImgFloor::ImgFloor(float length, float width, float owidth) {
+    w=width;
+    l=length;
+    o=owidth;
+    anchor=Vec(-w/2,-l/2-o);
+    sh_num=1;
+    sh=new ColoredFig*[1];
 
+    Vec **pg=new Vec*[9];
+    pg[0]=new Vec(anchor.getX(),anchor.getY());
+    pg[1]=new Vec(anchor.getX(),anchor.getY()+l+o);
+    pg[2]=new Vec(anchor.getX()+w,anchor.getY()+l+o);
+    pg[3]=new Vec(anchor.getX()+w,anchor.getY());
+    pg[4]=new Vec(anchor.getX()+w-o,anchor.getY());
+    pg[5]=new Vec(anchor.getX()+w-o,anchor.getY()+o);
+    pg[6]=new Vec(anchor.getX()+o,anchor.getY()+o);
+    pg[7]=new Vec(anchor.getX()+o,anchor.getY());
+    pg[8]=new Vec(anchor.getX(),anchor.getY());
+    sh[0] = new class Polygon(9,pg);
+    sh[0]->ClearColor();
+    sh[0]->draw();
+    ///think about the process to establish a class array
+//    Vec p1=Vec(anchor.getX(),anchor.getY());
+//    Vec p2=Vec(anchor.getX()+w,anchor.getY()+l);
+//    ((class Polygon*)sh[0])->set_p1(p1);
+//    ((class Polygon*)sh[0])->set_p2(p2);
+
+}
+ImgPlot::ImgPlot(Vec s, float length, float width) {
+    anchor=s;
+    l=length;
+    w=width;
+    sh_num=1;
+    sh=new ColoredFig*[1];
+    sh[0]=new class Rectangle;
+    Vec **pg=new Vec*[4];
+    pg[0]=new Vec(anchor.getX(),anchor.getY());
+    pg[1]=new Vec(anchor.getX(),anchor.getY()+l);
+    pg[2]=new Vec(anchor.getX()+w,anchor.getY()+l);
+    pg[3]=new Vec(anchor.getX()+w,anchor.getY());
+    sh[0] = new class Polygon(4,pg);
+    sh[0]->ClearColor();
+    sh[0]->draw();
+}
+#endif

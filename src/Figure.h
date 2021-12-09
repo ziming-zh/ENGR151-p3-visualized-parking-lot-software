@@ -4,6 +4,7 @@
 
 #ifndef P3_FIGURE_H
 #define P3_FIGURE_H
+#include "OPEN_GL_ENABLED.h"
 #include "vec.h"
 
 class Figure {
@@ -35,6 +36,7 @@ public:
     };
     ~ColoredFig(){}
     void Paint();
+    void ClearColor();
 
 };
 
@@ -134,16 +136,13 @@ private:
     Vec s1,s2;
 };
 
-class Teleporter : public Rectangle{
 
-
-};
 class Polygon : public ColoredFig {
 private:
     int num;
-    Vec *p;
+    Vec **p;
 public:
-    Polygon(int num,Vec *p);
+    Polygon(int num,Vec **p);
     ~Polygon(){};
     void move(Vec s);
     void draw();
@@ -192,7 +191,25 @@ public:
 protected:
     float w,h,o;
 };
-
-
-
+class Teleported: public Group{
+public:
+    Teleported(Vec s=Vec(.0,.0),float width=0.2,float height = 0.8);
+    ~Teleported(){}
+protected:
+    float w,h;
+};
+class ImgFloor : public Group{
+public:
+    ImgFloor(float length=1.2,float width=1.6,float owidth=0.2);
+    ~ImgFloor(){}
+private:
+    float l,w,o;
+};
+class ImgPlot : public Group{
+public:
+    ImgPlot(Vec s=Vec(.0,.0),float length=0.1,float width = 0.05);
+    ~ImgPlot(){}
+private:
+    float l,w;
+};
 #endif //P3_FIGURE_H

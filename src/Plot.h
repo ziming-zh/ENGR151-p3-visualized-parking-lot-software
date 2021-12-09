@@ -6,15 +6,7 @@
 #define PGROUP_16_PLOT_H
 
 #include "vec.h"
-typedef struct _Unit{
-    int row;
-    int col;
-}unit;
-typedef struct _RGB{
-    int red;
-    int green;
-    int blue;
-}Rgb;
+
 
 class Plot {
 private:

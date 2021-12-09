@@ -31,10 +31,12 @@ void display() {
 //    c.move(Vec(0.5,0));
 //    c.draw();
 
-    UFO u;
-
-    u.draw();
-
+//    UFO u;
+//    u.draw();
+    ImgFloor imgf;
+    imgf.draw();
+    ImgPlot imgp;
+    imgp.draw();
 //    Spacecraft spc;
 //    spc.draw();
 	/* flush drawing routines to the window */
