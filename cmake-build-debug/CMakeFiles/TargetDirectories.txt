@@ -1,3 +1,0 @@
-C:/Users/Ziming/Documents/group_9/pgroup-16/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Ziming/Documents/group_9/pgroup-16/cmake-build-debug/CMakeFiles/pgroup_16.dir
-C:/Users/Ziming/Documents/group_9/pgroup-16/cmake-build-debug/CMakeFiles/rebuild_cache.dir
