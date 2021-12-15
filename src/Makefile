@@ -5,9 +5,9 @@
 CCC = g++
 CCFLAGS = -Werror -pedantic -Wall -Wextra -Wvla -std=c++17
 LIBS = -lglut -lGL 
-PMS_SRC = pms.cpp # add more files here (management)
+PMS_SRC = pms.cpp Figure.cpp Vehicle.cpp Floor.cpp Slot.cpp Status.cpp Ticket.cpp# add more files here (management)
 PMS = pms
-IPA_SRC = ipa.cpp # add more files here (interstellar)
+IPA_SRC = ipa.cpp Figure.cpp Vehicle.cpp Floor.cpp Slot.cpp Status.cpp Ticket.cpp# add more files here (interstellar)
 IPA = ipa
 
 #
