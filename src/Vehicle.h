@@ -1,7 +1,3 @@
-//
-// Created by Ziming on 2021/12/7.
-//
-
 #ifndef P3_VEHICLE_H
 #define P3_VEHICLE_H
 
@@ -9,6 +5,7 @@
 #include "Figure.h"
 #include "Ticket.h"
 #include <vector>
+using namespace std;
 class Vehicle {
 private:
     int status;
@@ -31,14 +28,15 @@ private:
       * unlock itself automatically
       */
 
-      std::vector<unit> warn_slot;
-      std::vector<Vehicle*> vp;
+      vector<unit> warn_col;
       int type;
       int final_enter_time;
       unit plot;
-      Ticket enter_ticket;
-      Ticket exit_ticket;
+      ArrivalTicket enter_ticket;
+      DepartureTicket exit_ticket;
       bool exit;
+    int warn_rowl;//warn a row when it's turning on the left main road
+    int warn_rowr;//warn a row when it's turning on the right main road
 
       /**
        * 1 Car
@@ -57,7 +55,7 @@ private:
 #endif
 
 
-       void send_signal(Vehicle *v); //send signal to a specific car, tell it to stop
+       void send_signal(); //send signal to a specific car, tell it to stop
        ///the most important task find out which car to send signal to
 
 
@@ -96,6 +94,16 @@ public:
     Group *get_vehicle();
     void set_exit(bool flag);
     bool get_exit();
+    void change_warn_rowl(int rowl){warn_rowl=rowl;}
+    void change_warn_rowr(int rowr){warn_rowr=rowr;}
+    int get_warn_rowl(){return warn_rowl;}
+    int get_warn_rowr(){return warn_rowr;}
+    void restart(){stop=false;};
+    ArrivalTicket* get_arrival_ticket();
+    DepartureTicket* get_departure_ticket();
+    bool warned_slot(int c);
+    void block_slot(int c);
+    void pass_slot();
 };
 
 

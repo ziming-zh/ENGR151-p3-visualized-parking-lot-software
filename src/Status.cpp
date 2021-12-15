@@ -1,217 +1,280 @@
-//
-// Created by Ziming on 2021/12/13.
-//
-
+#include "Ticket.h"
 #include "Status.h"
+
 using namespace std;
-void change_status(Floor *f,vector <Vehicle>::iterator &v,int vec_n) {
+
+bool detect_safe(Floor *f,vector <Vehicle>::iterator &v,int vec_n,int allv)
+{
+    vector<Vehicle>::iterator fv;
+    fv=v-vec_n+1;
+    float temp=0;
+    float dis=0;
+    switch(v->get_status())
+    {
+        case 0:
+            for(int jj=0;jj<allv;jj++)
+            {
+                temp=fv->get_anchor().getY()-v->get_anchor().getY();
+                if(fv!=v&&fv->get_status()==1)if(temp<f->get_owidth())return false;
+                fv++;
+            }
+            break;
+        case 1:
+        case 2:
+            for(int ii=0;ii<=f->get_row();ii++)
+            {
+                temp=v->get_anchor().getY()+v->get_speed();
+                if(temp>f->get_main_turnpoint(ii,1).getY())
+                {
+                    for(int jj=0;jj<allv;jj++)
+                    {
+                        if(fv->get_warn_rowl()==ii&&fv->get_status()>v->get_status())return false;
+                        fv++;
+                    }
+                }
+            }
+            break;
+        case 3:
+        case 7:
+            for(int jj=0;jj<allv;jj++)
+            {
+                if(fv->get_plot().row==v->get_plot().row)
+                {
+                    if(fv->get_status()==4||fv->get_status()==6)
+                    {
+                        temp=f->get_slot_bound(fv->get_plot()).getX()-v->get_anchor().getX();
+                        dis=(f->get_owidth()+f->get_slot_w())/2;
+                        if(temp>dis&&temp-v->get_speed()<dis)return false;
+                    }
+                    else if(fv->get_status()==3&&fv->get_plot().col!=0&&fv!=v)
+                    {
+                        unit sl={fv->get_plot().row,fv->get_plot().col-1};
+                        temp=fv->get_anchor().getX()-f->get_slot_bound(sl).getX();
+                        dis=(-f->get_owidth()+f->get_slot_w())/2;
+                        if(temp+dis>=0)
+                            {
+                                if(f->get_slot_bound(sl).getX()-dis<=v->get_anchor().getX()&&v->get_anchor().getX()<f->get_slot_bound(sl).getX())
+                                {
+                                    return false;
+                                }
+                            }
+                    }
+                }
+                fv++;
+            }
+            break;
+        case 6:
+            for(int jj=0;jj<allv;jj++)
+            {
+                if(fv!=v)
+                {
+                    if(fv->get_status()!=3 &&fv->get_status()!=7)
+                        continue;
+                    temp=(v->get_anchor()).getX()-fv->get_anchor().getX();
+                    dis=(f->get_owidth()+f->get_slot_w())/2;
+                    if(temp<dis&&temp>-dis)
+                        return false;
+                }
+            }
+            break;
+    }
+    return true;
+}
+
+void self_dect(Floor *f,vector <Vehicle>::iterator &v,int vec_n,int allv)
+{
+    vector<Vehicle>::iterator fv;
+    fv=v-vec_n+1;
+    float temp=0;
+    for(int jj=0;jj<allv;jj++)
+    {
+        bool flag1=true;
+        if(fv!=v&&fv->get_status()==v->get_status())
+        {
+            switch(v->get_status())
+            {
+                case 1:
+                    temp=fv->get_anchor().getY()-v->get_anchor().getY();
+                    break;
+                case 3:
+                case 7:
+                    temp=fv->get_anchor().getX()-v->get_anchor().getX();
+                    if(fv->get_plot().row!=v->get_plot().row)flag1=false;
+                    break;
+                case 9:
+                    temp=v->get_anchor().getY()-fv->get_anchor().getY();
+                    break;
+            }
+            if(temp<=f->get_owidth()&&temp>0&&flag1)
+            {
+                v->receive_signal();
+                if((v->get_status()==7||v->get_status()==3)&&v->warned_slot(0))
+                {
+                    v->change_warn_rowl(v->get_plot().row);
+                }
+                else if(v->get_plot().col!=0)v->change_warn_rowl(-1);
+                break;
+            }
+        }
+        fv++;
+    }
+    return;
+}
+
+void change_status(Floor *f,vector <Vehicle>::iterator &v,int vec_n,int allv) {
 
     int mtime=f->get_time();
-
+    float temp=0;
+    float dis=0;
+    v->restart();
     switch(v->get_status())
     {
         case 0:{
-            ///if the time reaches
-            ///enter into the plot
-            if(mtime==v->get_enter_time())
+            if(detect_safe(f,v,vec_n,allv))
             {
-                cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" enters the parking plot"<<endl;
-                v->set_status(1);
+                if(mtime>=v->get_enter_time())
+                {
+                    cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" enters the parking plot"<<endl;
+                    v->set_status(1);
+                }
             }
             break;
         }
 
         case 1:{
-
-            /// find the plot for the car
-
             if(v->get_plot().row==-1){
                 bool flag =0;
                 if(v->get_type()==4)   flag=true;
                 v->set_plot(f->find_slot(flag));
+                v->get_arrival_ticket()->set_arr(v->get_enter_time());
+                v->get_arrival_ticket()->set_dep(v->get_interval());
+                v->get_arrival_ticket()->set_col(v->get_plot().col);
+                v->get_arrival_ticket()->set_row(v->get_plot().row);
+                v->get_arrival_ticket()->set_type(v->get_type());
+
+                v->get_arrival_ticket()->printTicket();
+
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" Find plot for the vehicle ["<<v->get_plot().row<<","<<v->get_plot().col<<"]"<<endl;
                 break;
             }
-            ///print the enter ticket
-
-            ///begin the self-detect process
-            v->self_detect();
-            //self-detect process for the front car to decide whether to stop
-
-            ///begin the straight auto-move process
-            // if the stop signs remains false, do move for constant speed per unit
-            if(!v->get_stop())
+            self_dect(f,v,vec_n,allv);
+            if(!v->get_stop()&&detect_safe(f,v,vec_n,allv))
                 v->move_straight(1);
-
+            if(v->get_anchor().getY()+v->get_speed()>=f->get_main_turnpoint(v->get_plot().row,1).getY())
+            {
+                v->change_warn_rowl(v->get_plot().row);
+            }
             if(v->get_anchor().getY()>=f->get_main_turnpoint(v->get_plot().row,1).getY()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" prepares for turning to side road"<<endl;
                 v->set_status(2);
             }
             break;
         }
-        ///if reach the turning point --> calculating for the turning point
-        ///then enter into the side road
         case 2:{
-            /// send continuous signal to the following car to **wait behind**
-            //   if their distance to the *branch* is less than the normal car distance
 
             Vec spin=f->get_main_turnpoint(v->get_plot().row,1)+Vec(f->get_owidth()/2,.0);
-            v->move_curly(spin,1); /// put your curve algorithm here
-            ///begin the curving the auto-move process
-            ///begin the auto-rotate process
-            
+            if(!v->get_stop()&&detect_safe(f,v,vec_n,allv))
+                v->move_curly(spin,1);
             if(v->get_anchor().getX()>=f->get_side_turnpoint(v->get_plot().row,1).getX()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" finished the turning process"<<endl;
                 v->set_status(3);
+                if(v->get_plot().col!=0)v->change_warn_rowl(-1);
             }
             break;
         }
-        /// if the anchor point totally enter into the side road
         case 3:{
-            ///self detect process
-
-            ///signal to the **possible** car staying in the plot aside the car and prevent them from going out
-
-
-            ///begin the straight auto-move process
-            //change back -> move straight
-            v->move_straight(4);
-
-            ///end the auto-rotate process
-
-            ///SPECIAL: once the car move past the parking lot,
-            // send continuous signal to the following car to **wait behind**
-            // if their distance to the *plot* is less than the normal car distance
+            self_dect(f,v,vec_n,allv);
+            unit sl={v->get_plot().row,0};
+            temp=v->get_anchor().getX()-f->get_slot_bound(sl).getX();
+            dis=(f->get_owidth()+f->get_slot_w())/2;
+            if(v->get_plot().col!=0)v->change_warn_rowl(-1);
+            if(v->get_stop()&&temp<dis&&temp>-dis)v->change_warn_rowl(v->get_plot().row);
+            if(!v->get_stop()&&detect_safe(f,v,vec_n,allv))
+                v->move_straight(4);
             if(v->get_anchor().getX()>=f->get_reversing_point(v->get_plot()).getX()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" began to reverse into the plot"<<endl;
                 v->set_status(4);
             }
             break;
         }
-        ///if reach the plotting point --> calculating for the plotting point
-        ///enter into the planned plotting place
         case 4:{
-
-            /// CONTINUE from case 3
-            /// send continuous signal to the following car to **wait behind**
-            //   if their distance to the *plot* is less than the normal car distance
-
-            ///begin the curving auto-move process (reverse version)
             Vec spin=f->get_reversing_point(v->get_plot())+Vec(.0,f->get_owidth()/2);
-            //            cout<<"<1> "<<v->get_anchor().getY()<<endl;
-            //            cout<<"<2> "<<f->get_slot_bound(v->get_plot()).getY()<<endl;
             if(v->get_anchor().getY()<f->get_slot_bound(v->get_plot()).getY())
             {
                 v->move_curly(spin,1);
-                // cout<<"Y"<<endl;
             }
             else
                 v->move_straight(1);
 
-
-
             if(v->get_anchor().getY()>=f->get_slot_center(v->get_plot()).getY()){
-                cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully reaches the plot"<<endl;
+                cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully reaches the slot"<<endl;
                 v->set_status(5);
                 v->set_final_enter_time(mtime);
+                if(v->get_plot().col==0)v->change_warn_rowl(-1);
             }
             break;
         }
-        /// the anchor point of the car is set right in the center of the plot
-        /// staying the plot (inert state)
         case 5:{
-            ///wait for the time to change the status
-
-
             if(mtime>=v->get_final_enter_time()+v->get_interval()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" stays for "<<v->get_interval()<<" seconds in the slot and finally begins to leave"<<endl;
                 v->set_status(6);
             }
             break;
         }
-        /// after triggered by case 5
-        /// exit the plot and reach the side road
         case 6:{
-            /// send continuous signal to the following car to **wait behind**
-            //   if their distance to the *plot* is less than the normal car distance
-            ///begin the curving auto-move process
-            Vec spin=f->get_reversing_point(v->get_plot())+Vec(.0,f->get_owidth()/2);
-            if(v->get_anchor().getY()<f->get_slot_bound(v->get_plot()).getY())
-            {
-                v->move_curly(spin,0);
-            }
-            else
-                v->move_straight(2);
-            ///begin the auto-rotate process
-            if(v->get_anchor().getX()>=f->get_reversing_point(v->get_plot()).getX()){
-                cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully moves out of the plot"<<endl;
-                f->get_slot()[v->get_plot().row][v->get_plot().col]->exit_slot();
-                v->set_status(7);
+            if(detect_safe(f,v,vec_n,allv)){
+                Vec spin=f->get_reversing_point(v->get_plot())+Vec(.0,f->get_owidth()/2);
+                if(v->get_anchor().getY()<f->get_slot_bound(v->get_plot()).getY())
+                {
+                    v->move_curly(spin,0);
+                }
+                else
+                    v->move_straight(2);
+                if(v->get_anchor().getX()>=f->get_reversing_point(v->get_plot()).getX()){
+                    cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully moves out of the plot"<<endl;
+                    f->get_slot()[v->get_plot().row][v->get_plot().col]->exit_slot();
+                    v->set_status(7);
+                }
             }
             break;
         }
-        /// after reach the plotting point
-        /// move straight at the side road
         case 7:{
-
-
-            ///self-detect process
-
-            ///change the self-detect process
-            // change -> back the the original one // keep the distance with the front
-
-            ///signal to the **possible** car staying in the plot aside the car and prevent them from going out
-
-
-            ///begin the straight auto-move process
-            //change back -> move straight
-            v->move_straight(4);
-            ///end the auto-rotate process
+            self_dect(f,v,vec_n,allv);
+            if(!v->get_stop()&&detect_safe(f,v,vec_n,allv))
+                v->move_straight(4);
             if(v->get_anchor().getX()>=f->get_side_turnpoint(v->get_plot().row,0).getX()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" begins to merge into the side road"<<endl;
                 v->set_status(8);
             }
             break;
         }
-        /// after reach the boundary of the side road
-        ///move from the side road to the main road
         case 8:{
             Vec spin=f->get_side_turnpoint(v->get_plot().row,0)-Vec(.0,f->get_owidth()/2);
             v->move_curly(spin,1);
-            /// send continuous signal to the following car to **wait behind**
-            //   if their distance to the *branch* is less than the normal car distance
             if(v->get_anchor().getY()<=f->get_main_turnpoint(v->get_plot().row,0).getY()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully merge into the main road"<<endl;
                 v->set_status(9);
             }
             break;
         }
-        ///after reach the turning point
-        ///move straight on the main road
         case 9:{
-            ///self-detect process
-            //self-detect process for the front car to decide whether to stop
-            ///straight auto-move process
             v->move_straight(2);
-            // if the stop signs remains false, do move for constant speed per unit
             if(v->get_anchor().getY()<=f->get_exit().getY()){
                 cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" reaches the exit"<<endl;
+
                 v->set_status(10);
+                v->get_departure_ticket()->set_arr(v->get_enter_time());
+                v->get_departure_ticket()->set_dep(f->get_time());
+                v->get_departure_ticket()->set_col(v->get_plot().col);
+                v->get_departure_ticket()->set_row(v->get_plot().row);
+                v->get_departure_ticket()->set_type(v->get_type());
+
+                v->get_departure_ticket()->printTicket();
             }
             break;
         }
-        ///after having reached the exit
-        /// relevant functions with the exit of a car
         case 10:{
-            ///print_ticket
-#ifdef OPEN_GL
-            v->get_vehicle()->move(Vec(.0,-999.0));
-#endif
-
             v->set_exit(true);
-            //cout<<"Vehicle No."<<vec_n<<" <type> "<<v->get_type()<<" successfully leaves the plot"<<endl;
-            //v->delete_vehicle();
-
             break;
         }
         default:{
@@ -244,6 +307,7 @@ void Read_Log(vector <Vehicle> &v,Floor *f){
             vh.create_vehicle(start,type,begin,interv);
 #ifdef OPEN_GL
             vh.get_vehicle()->zoom(f->get_owidth()/vh.get_vehicle()->get_width()/2);
+            vh.get_vehicle()->initsize();
             //        if(type==4)   flag=true;
             //        vh.set_plot(f->find_slot((flag)));
             //        cout<<vh.get_plot().row<<" "<<vh.get_plot().col<<endl;

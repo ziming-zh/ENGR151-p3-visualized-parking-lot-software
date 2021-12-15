@@ -16,10 +16,10 @@ find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIR})
 
 # Build Part 1 of the project (add all of related files)
-add_executable(p3_part1 pms.cpp Floor.cpp Vehicle.cpp Slot.cpp Status.cpp)
+add_executable(p3_part1 pms.cpp Floor.cpp Vehicle.cpp Slot.cpp Status.cpp Ticket.cpp)
 
 # Build Part 2 of the project (add all of related files)
-add_executable(p3_part2 ipa.cpp Figure.cpp Vehicle.cpp Floor.cpp Slot.cpp Status.cpp)
+add_executable(p3_part2 ipa.cpp Figure.cpp Vehicle.cpp Floor.cpp Slot.cpp Status.cpp Ticket.cpp)
 
 # Link the OpenGL, GLUT and Maths library to your project (don't modify)
 target_link_libraries(p3_part2 ${GLUT_LIBRARY} ${OPENGL_LIBRARY} m)

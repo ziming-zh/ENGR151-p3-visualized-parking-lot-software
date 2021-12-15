@@ -1,7 +1,3 @@
-//
-// Created by Ziming on 2021/12/4.
-//
-
 #include "Slot.h"
 
 Slot::Slot(Vec anchor, float length, float width) {

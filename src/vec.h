@@ -1,7 +1,3 @@
-//
-// Created by Ziming on 2021/12/4.
-//
-
 #ifndef P3_VEC_H
 #define P3_VEC_H
 #include <cmath>
@@ -38,7 +34,6 @@ public:
 
     // Overload - on  Vectors
     // return thier difference Vector
-
     Vec operator- (Vec v) {
         return Vec(x - v.getX(), y - v.getY());
     }
@@ -65,6 +60,9 @@ public:
         y=dist* sinf(cur);
         return Vec(x,y);
     }
+    // Overload >> on an angle
+    // return current vector rotated clockwise
+    // by this angle
     Vec operator>> (float angle)
     {
         float dist= sqrt(x*x+y*y);
@@ -74,9 +72,6 @@ public:
         y=dist* sinf(cur);
         return Vec(x,y);
     }
-    // Overload >> on an angle
-    // return current vector rotated clockwise
-    // by this angle
 };
 
 #endif //P3_VEC_H

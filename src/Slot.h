@@ -1,7 +1,3 @@
-//
-// Created by Ziming on 2021/12/4.
-//
-
 #ifndef PGROUP_16_PLOT_H
 #define PGROUP_16_PLOT_H
 

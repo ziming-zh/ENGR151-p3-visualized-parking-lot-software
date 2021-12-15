@@ -1,26 +1,24 @@
-//
-// Created by Ziming on 2021/12/4.
-//
-
-
 #include <GL/freeglut.h>
 #include "Figure.h"
+
 #ifdef OPEN_GL
+
 void ColoredFig::Paint() {
     r = (float)rand() / (float)RAND_MAX;
     g = (float)rand() / (float)RAND_MAX;
     b = (float)rand() / (float)RAND_MAX;
 }
+
 void ColoredFig::ClearColor(){
     r=1.0;
     g=1.0;
     b=1.0;
 }
 
-
 void Circle::move(Vec s) {
     ori=ori+s;
 }
+
 void Circle::draw() {
     glColor3f(r, g, b);
     glBegin(GL_LINE_LOOP);
@@ -30,6 +28,7 @@ void Circle::draw() {
     }
     glEnd();
 }
+
 void Circle::zoom(float k) {
     radius*=k;
     ori=(ori-anchor)*k+anchor;
@@ -38,10 +37,12 @@ void Circle::zoom(float k) {
 void Circle::rotate(float angle) {
     ori=((ori-anchor)<<angle)+anchor;
 }
+
 void SemiCircle::move(Vec s) {
     ori=ori+s;
     start=start+s;
 }
+
 void SemiCircle::draw() {
     glColor3f(r, g, b);
     glBegin(GL_POLYGON);
@@ -54,11 +55,13 @@ void SemiCircle::draw() {
     glVertex2d(((start-ori)<<(PI)).getX() + ori.getX(),  ((start-ori)<<(PI)).getY() + ori.getY());
     glEnd();
 }
+
 void SemiCircle::rotate(float angle) {
     start=((start-anchor)<<angle)+anchor;
     ori=((ori-anchor)<<angle)+anchor;
 
 }
+
 void SemiCircle::autorotate() {
     start=((start-ori)<<0.05)+ori;
 }
@@ -73,6 +76,7 @@ void Triangle::move(Vec s) {
     p2=s+p2;
     p3=s+p3;
 }
+
 void Triangle::draw() {
     glColor3f(r, g, b);
     glBegin(GL_TRIANGLES);
@@ -82,11 +86,13 @@ void Triangle::draw() {
 
     glEnd();
 }
+
 void Triangle::rotate(float angle) {
     p1=((p1-anchor)<<angle)+anchor;
     p2=((p2-anchor)<<angle)+anchor;
     p3=((p3-anchor)<<angle)+anchor;
 }
+
 void Triangle::zoom(float k) {
     p1=((p1-anchor)*k)+anchor;
     p2=((p2-anchor)*k)+anchor;
@@ -99,6 +105,7 @@ void Quad::move(Vec s) {
     p3=s+p3;
     p4=s+p4;
 }
+
 void Quad::draw() {
     glColor3f(r, g, b);
     glBegin(GL_QUADS);
@@ -109,23 +116,27 @@ void Quad::draw() {
 
     glEnd();
 }
+
 void Quad::rotate(float angle) {
     p1=((p1-anchor)<<angle)+anchor;
     p2=((p2-anchor)<<angle)+anchor;
     p3=((p3-anchor)<<angle)+anchor;
     p4=((p4-anchor)<<angle)+anchor;
 }
+
 void Quad::zoom(float k) {
     p1=((p1-anchor)*k)+anchor;
     p2=((p2-anchor)*k)+anchor;
     p3=((p3-anchor)*k)+anchor;
     p4=((p4-anchor)*k)+anchor;
 }
+
 Polygon::Polygon(int num, Vec **p) {
     this->num=num;
     this->p=p;
 
 }
+
 void Polygon::move(Vec s) {
     for(int i = 0;i<num;i++){
         (*p[i])=s+(*p[i]);
@@ -141,12 +152,14 @@ void Polygon::draw() {
     //glVertex2d(p[0]->getX(),p[0]->getY());
     glEnd();
 }
+
 void Polygon::rotate(float angle) {
     for(int i  = 0;i<num;i++)
     {
         *p[i]=((*p[i]-anchor)<<angle)+anchor;
     }
 }
+
 void Polygon::zoom(float k) {
     for(int i  = 0;i<num;i++)
     {
@@ -172,12 +185,17 @@ void Group::rotate(float angle) {
         sh[i]->rotate(angle);
     }
 }
+
 void Group::zoom(float k) {
     for (int i = 0; i < sh_num; i++)
     {
         sh[i]->zoom(k);
+        sh[i]->setAnchor((sh[i]->getAnchor()-anchor)*k+anchor);
     }
+    gwidth*=k;
+    size*=k;
 }
+
 void Group::move(Vec dir) {
     for (int i = 0; i < sh_num; i++)
     {
@@ -216,6 +234,7 @@ Car::Car(Vec anchor, float width, float height, float owidth) {
     ((class Rectangle*)sh[2])->set_p1(p1);
     ((class Rectangle*)sh[2])->set_p2(p2);
 
+    initsize();
 
     sh[2]->Paint();
     // left tape
@@ -247,6 +266,7 @@ Car::Car(Vec anchor, float width, float height, float owidth) {
     sh[3]->Paint();
     Group::rotate(PI/2);
 }
+
 Group::~Group()
 {
     for (int i = 0; i < sh_num; i++)
@@ -254,6 +274,10 @@ Group::~Group()
         if(sh[i]!=NULL)
             delete sh[i];
     }
+}
+
+void Group::auto_rotate() {
+    this->rotate(0.01);
 }
 
 UFO::UFO(Vec anchor, float radius, float height, float width) {
@@ -274,6 +298,8 @@ UFO::UFO(Vec anchor, float radius, float height, float width) {
     sh[1]->setAnchor(anchor);
     ((class Rectangle*)sh[1])->set_p1(p1);
     ((class Rectangle*)sh[1])->set_p2(p2);
+
+    initsize();
 
     p1 = Vec(anchor.getX() + h , anchor.getY() - 2 * h);
     p2 = Vec(anchor.getX() + 3 * h, anchor.getY() - h );
@@ -326,13 +352,22 @@ UFO::UFO(Vec anchor, float radius, float height, float width) {
 
 }
 
+void Group::auto_zoom() {
+    if(size>=1)zoom_out=false;
+    else if(size<=0.5)zoom_out=true;
+    if(zoom_out)zoom(1.05);
+    else zoom(0.95);
+}
+
 Spacecraft::Spacecraft(Vec anchor, float width, float height, float owidth) {
     // init
     this->anchor = anchor;
     w = width;
+
     h = height;
     o=owidth;
     gwidth=2*w;
+    max_w=gwidth;
     gheight=h;
     sh = new ColoredFig*[8];
     sh_num=8;
@@ -363,6 +398,8 @@ Spacecraft::Spacecraft(Vec anchor, float width, float height, float owidth) {
     ((class Rectangle*)sh[3])->set_p1(p1);
     ((class Rectangle*)sh[3])->set_p2(p2);
     
+    initsize();
+
     p1 = Vec(anchor.getX() + 3*w/8-2.5*o , anchor.getY() +h/4 );
     p2 = Vec(anchor.getX() + 3*w/8, anchor.getY() +h/4+h/20 );
     sh[4]=new class Rectangle();
@@ -419,6 +456,7 @@ Spacecraft::Spacecraft(Vec anchor, float width, float height, float owidth) {
     sh[7]->Paint();
 
 }
+
 Teleported::Teleported(Vec anchor, float width, float height) {
     this->anchor=anchor;
     w=width;
@@ -434,6 +472,7 @@ Teleported::Teleported(Vec anchor, float width, float height) {
     ((class Rectangle*)sh[0])->set_p2(p2);
     sh[0]->Paint();
 }
+
 ImgFloor::ImgFloor(float length, float width, float owidth) {
     w=width;
     l=length;
@@ -461,8 +500,8 @@ ImgFloor::ImgFloor(float length, float width, float owidth) {
 //    Vec p2=Vec(anchor.getX()+w,anchor.getY()+l);
 //    ((class Polygon*)sh[0])->set_p1(p1);
 //    ((class Polygon*)sh[0])->set_p2(p2);
-
 }
+
 ImgSlot::ImgSlot(Vec s, float length, float width) {
     anchor=s;
     l=length;
@@ -493,6 +532,7 @@ SpcSlot::SpcSlot(float owidth) {
 //    sh[1]->Paint();
     //ImgSlot(s+Vec(1.0,.0),length,width);
 }
+
 void SpcSlot::set_l(float l) {
     this->l=l;
     Vec p1= Vec(anchor.getX()+o,anchor.getY()+o);

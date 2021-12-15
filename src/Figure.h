@@ -1,9 +1,6 @@
-//
-// Created by Ziming on 2021/12/4.
-//
-
 #ifndef P3_FIGURE_H
 #define P3_FIGURE_H
+
 #include "OPEN_GL_ENABLED.h"
 #include "vec.h"
 
@@ -22,8 +19,6 @@ public:
 
     virtual ~Figure() {}
 };
-
-
 
 class ColoredFig : public Figure{
 protected:
@@ -77,7 +72,6 @@ public:
 private:
     Vec ori;
     Vec start;
-
 };
 
 class Quad : public ColoredFig {
@@ -97,8 +91,8 @@ protected:
     Vec p2;
     Vec p3;
     Vec p4;
-
 };
+
 class Triangle : public ColoredFig {
 public:
     Triangle(): p1(-.5,-.5), p2(.5,-.5),p3(.0,.5){};
@@ -114,7 +108,6 @@ protected:
     Vec p1;
     Vec p2;
     Vec p3;
-
 };
 
 class Rectangle : public Quad{
@@ -136,7 +129,6 @@ private:
     Vec s1,s2;
 };
 
-
 class Polygon : public ColoredFig {
 private:
     int num;
@@ -150,14 +142,15 @@ public:
     void zoom(float k);
 };
 
-
-
 class Group : public Figure {
 protected:
     // A Group of figure "has" other figures.
     ColoredFig **sh;
     int sh_num;
     float gwidth,gheight;
+    float max_w;
+    float size;
+    bool zoom_out;
 public:
     // We left out the constructor as well
     float get_width();
@@ -166,6 +159,9 @@ public:
     void move_to(Vec dir); // Move all its figures to a specific place
     void rotate(float angle); // Rotate the group as a whole.
     void zoom(float k); // Zoom the group as a whole.
+    void auto_rotate();
+    void auto_zoom();
+    void initsize(){size=1;zoom_out=true;}
     ~Group();
 
 };
@@ -177,18 +173,24 @@ public:
 
     float w,h,o;
 };
+
 class UFO: public Group{
 public:
     UFO(Vec s=Vec(.0,.0),float radius=0.5,float height=0.1,float width=0.2);
+
     ~UFO(){}
-protected:
+private:
     float radius,h, w;
+
 };
+
 class Spacecraft: public Group{
 public:
-    Spacecraft(Vec s=Vec(.0,.0),float width=0.2,float height = 0.8,float owidth=0.01);
+    Spacecraft(Vec s=Vec(.0,.0),float width=0.1,float height = 0.4,float owidth=0.005);
+
+
     ~Spacecraft(){}
-protected:
+private:
     float w,h,o;
 };
 class Teleported: public Group{
@@ -198,6 +200,7 @@ public:
 protected:
     float w,h;
 };
+
 class ImgFloor : public Group{
 public:
     ImgFloor(float length=1.2,float width=1.6,float owidth=0.15);
@@ -205,6 +208,7 @@ public:
 private:
     float l,w,o;
 };
+
 class ImgSlot : public Group{
 public:
     ImgSlot(Vec s=Vec(.0,.0),float length=0.1,float width = 0.05);
@@ -212,6 +216,7 @@ public:
 protected:
     float l,w;
 };
+
 class SpcSlot : public ImgSlot{
 public:
     SpcSlot(float owidth=0.01);
@@ -221,4 +226,5 @@ public:
 private:
     float o;
 };
+
 #endif //P3_FIGURE_H

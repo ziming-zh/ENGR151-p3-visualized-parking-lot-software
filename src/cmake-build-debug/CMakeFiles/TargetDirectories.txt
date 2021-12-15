@@ -1,0 +1,4 @@
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/p3_part1.dir
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/p3_part2.dir
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Ziming/Desktop/P3/pgroup-16/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir

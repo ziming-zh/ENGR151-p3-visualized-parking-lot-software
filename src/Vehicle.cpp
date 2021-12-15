@@ -1,22 +1,23 @@
-//
-// Created by Ziming on 2021/12/7.
-//
-
 #include "Vehicle.h"
 #include "Ticket.h"
 #include <iostream>
+#include <vector>
+using namespace std;
 
-Vehicle::Vehicle() {
+Vehicle::Vehicle(){
     status=0;
     stop=false;
     exit= false;
     speed=0.001;
     plot={-1,-1};
+    warn_rowl=-1;
+    warn_rowr=-1;
     //warn_type=0;
 #ifdef OPEN_GL
     vehicle=NULL;
 #endif
 }
+
 #ifdef OPEN_GL
 Group* Vehicle::get_vehicle(){
     return vehicle;
@@ -152,15 +153,15 @@ void Vehicle::delete_vehicle() {
 #endif
 
 
-void Vehicle::send_signal(Vehicle *v) {
-    v->receive_signal();
+void Vehicle::send_signal() {
+    
 }
 
 void Vehicle::receive_signal() {
     stop=true;
 }
 void Vehicle::self_detect() {
-
+    
 }
 int Vehicle::get_enter_time() {
     return enter_time;
@@ -198,4 +199,47 @@ void Vehicle::set_exit(bool flag) {
 
 bool Vehicle::get_exit() {
     return exit;
+}
+ArrivalTicket* Vehicle::get_arrival_ticket() {
+    return &enter_ticket;
+}
+
+DepartureTicket* Vehicle::get_departure_ticket() {
+    return &exit_ticket;
+}
+
+bool Vehicle::warned_slot(int c)
+{
+    vector<unit>::iterator sl;
+    if(warn_col.size()>0)
+    {
+        for(sl=warn_col.begin();sl!=warn_col.end();sl++)
+        {
+            if(c==sl->col)return true;
+        }
+    }
+    return false;
+}
+
+void Vehicle::block_slot(int c)
+{
+    unit a={plot.row,c};
+    warn_col.push_back(a);
+    return;
+}
+
+void Vehicle::pass_slot()
+{
+    unit a;
+    vector<unit>::iterator sl;
+    if(warn_col.size()>1)
+    {
+        for(sl=warn_col.begin();sl!=warn_col.end()-1;sl++)
+        {
+            a=*(sl+1);
+            *sl=a;
+        }
+    }
+    warn_col.pop_back();
+    return;
 }

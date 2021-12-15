@@ -6,7 +6,9 @@
 #define PGROUP_16_FLOOR_H
 
 #include "Slot.h"
-
+#include "Route.h"
+#include "Vehicle.h"
+#include <vector>
 class Floor {
 public:
     Floor(int row=3,int col=10,float width=1.6,float length=1.2,float owidth=0.15)
@@ -55,6 +57,13 @@ public:
     float get_owidth();
     void set_time();    //make the timer move in pace of the timestep function (don't move it)
     int get_time();   //get the current time(int)
+    float get_m_time(){return m_time;}
+
+    void set_v(std::vector<Vehicle>* m_v);
+    int get_row(){return row;}
+    int get_col(){return col;}
+    float get_slot_w(){return slot_w;}
+    float get_slot_l(){return slot_l;}
 private:
     float w,l,o;
     int row;
@@ -64,6 +73,17 @@ private:
     Vec anchor;
     float slot_l;
     float slot_w;
+    
+    std::vector<Vehicle> *v;
+
+    Corner **mainCorners;
+    Corner **branchCorners;
+    Corner get_main_corner(int pos, int r);
+    Corner get_branch_corner(int r, int c);
+    void init_corners();
+    void create_corners();
+    void delete_corners();
+
 };
 
 #endif //PGROUP_16_FLOOR_H

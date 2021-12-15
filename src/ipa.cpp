@@ -9,8 +9,8 @@
 #include "Figure.h"
 #include "Vehicle.h"
 #include "Status.h"
-using namespace std;
 
+using namespace std;
 
 void display() {
 
@@ -54,15 +54,24 @@ void display() {
     static vector<Vehicle> v;
     if(v.empty()){
         Read_Log(v,&f);
+        f.set_v(&v);
     }
     /// search each car find potential changes
     vector<Vehicle>::iterator it;
     int i =0;
+    int allv=v.size();
     for(it=v.begin();it!=v.end();it++){
         i++;
-        change_status(&f,it,i);
+        
+        if(it->get_type()==3){
+            it->get_vehicle()->auto_zoom();
+        }
+        if(it->get_type()==2){
+            it->get_vehicle()->auto_rotate();
+        }
+        change_status(&f,it,i,allv);
 #ifdef OPEN_GL
-        if(it->get_status())
+        if(it->get_status()!=0&&it->get_status()!=10)
             it->get_vehicle()->draw();
 #endif
     }
@@ -73,7 +82,7 @@ void display() {
     }
     if(flag==true)
     {
-        cout<<"ALL Vehicles exit successfully! The programm will end automatically"<<endl;
+        cout<<"ALL Vehicles exit successfully! The program will end automatically"<<endl;
         exit(0);
     }
 

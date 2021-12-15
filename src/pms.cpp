@@ -1,9 +1,8 @@
 #include <iostream>
 #include <stack>
 #include "Status.h"
-
-
 #include <time.h>
+
 using namespace std;
 void wait ( int m_seconds )
 {
@@ -45,9 +44,13 @@ void pms(){
         /// search each car find potential changes
         vector<Vehicle>::iterator it;
         int i =0;
+        int allv=v.size();
         for(it=v.begin();it!=v.end();it++){
             i++;
-            change_status(&f,it,i);
+            if(it->get_type()==3){
+                //it->get_vehicle()->auto_zoom();
+            }
+            change_status(&f,it,i,allv);
         }
         bool flag=true;
         for(it=v.begin();it!=v.end();it++){
@@ -57,6 +60,9 @@ void pms(){
         if(flag==true)
         {
             cout<<"ALL Vehicles exit successfully! The program will end automatically"<<endl;
+            for(it=v.begin();it!=v.end();it++){
+                it->delete_vehicle();
+            }
             exit(0);
         }
         wait(50);
