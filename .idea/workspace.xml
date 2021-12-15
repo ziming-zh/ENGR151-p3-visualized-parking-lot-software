@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="p3" targetName="p3_part2" />
+      <config projectName="p3" targetName="p3_part1" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d2aa342-4d30-4526-8ae6-8c3d98e02225" name="Changes" comment="Auto Related Functions Adjusted">
+      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pms.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="22BQ0UoMbGPxBxnmR49LWjBgm50" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+  </component>
+  <component name="RunManager" selected="CMake Application.p3_part2">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="p3_part1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p3" TARGET_NAME="p3_part1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="p3" RUN_TARGET_NAME="p3_part1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="p3_part2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="p3" TARGET_NAME="p3_part2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="p3" RUN_TARGET_NAME="p3_part2">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.p3_part1" />
+      <item itemvalue="CMake Application.p3_part2" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d2aa342-4d30-4526-8ae6-8c3d98e02225" name="Changes" comment="" />
+      <created>1639308281357</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639308281357</updated>
+      <workItem from="1639308287037" duration="13179000" />
+      <workItem from="1639322459375" duration="2385000" />
+      <workItem from="1639325477581" duration="7972000" />
+      <workItem from="1639373728753" duration="7105000" />
+      <workItem from="1639380993569" duration="1342000" />
+      <workItem from="1639382389649" duration="9220000" />
+      <workItem from="1639442124388" duration="4968000" />
+      <workItem from="1639465687651" duration="7709000" />
+      <workItem from="1639474497250" duration="857000" />
+      <workItem from="1639557289698" duration="158000" />
+      <workItem from="1639565503273" duration="2023000" />
+      <workItem from="1639572994609" duration="5684000" />
+      <workItem from="1639581849777" duration="564000" />
+    </task>
+    <task id="LOCAL-00001" summary="Animation added">
+      <created>1639324794850</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639324794850</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Animation added">
+      <created>1639359075351</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639359075351</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Animation added">
+      <created>1639359090091</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639359090091</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Animation added">
+      <created>1639371523506</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639371523506</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Command line &quot;Trigger for instances&quot; added">
+      <created>1639378123099</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1639378123099</updated>
+    </task>
+    <task id="LOCAL-00006" summary="NON_OPEN_GL mode fixed!">
+      <created>1639382341985</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639382341985</updated>
+    </task>
+    <task id="LOCAL-00007" summary="NON_OPEN_GL mode fixed!">
+      <created>1639382458528</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639382458528</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Bug #4 Fixed &#10;Add delete widget vehicle to prevent memory leak">
+      <created>1639402931312</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639402931312</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Bug #4 Fixed &#10;Add delete widget vehicle to prevent memory leak">
+      <created>1639403644851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1639403644851</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ticket Adjusted">
+      <created>1639409032352</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1639409032352</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ticket Adjusted">
+      <created>1639410556540</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1639410556540</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Detect_Safe function established">
+      <created>1639451574604</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1639451574604</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Statistics Adjusted">
+      <created>1639469056748</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1639469056748</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Auto Related Functions Adjusted">
+      <created>1639474263748</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1639474263748</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Animation added" />
+    <MESSAGE value="Command line &quot;Trigger for instances&quot; added" />
+    <MESSAGE value="NON_OPEN_GL mode fixed!" />
+    <MESSAGE value="Bug #4 Fixed &#10;Add delete widget vehicle to prevent memory leak" />
+    <MESSAGE value="Ticket Adjusted" />
+    <MESSAGE value="Detect_Safe function established" />
+    <MESSAGE value="Statistics Adjusted" />
+    <MESSAGE value="Auto Related Functions Adjusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auto Related Functions Adjusted" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="v-&gt;get_status()" language="ObjectiveC" />
+        <watch expression="v-&gt;get_plot()" language="ObjectiveC" />
+        <watch expression="v-&gt;get_anchor()" language="ObjectiveC" />
+        <watch expression="it-&gt;get_anchor()" language="ObjectiveC" />
+        <watch expression="f-&gt;get_side_turnpoint(v-&gt;get_plot().row,1)" language="ObjectiveC" />
+        <watch expression="slot[i][j]-&gt;is_vacant()" language="ObjectiveC" />
+        <watch expression="dis+spin" language="ObjectiveC" />
+        <watch expression="slot[i][j]" language="ObjectiveC" />
+        <watch expression="v-&gt;get_arrival_ticket()" language="ObjectiveC" />
+        <watch expression="v-&gt;get_enter_time()" language="ObjectiveC" />
+        <watch expression="v-&gt;get_interval()" language="ObjectiveC" />
+        <watch expression="f-&gt;get_v()-&gt;at(6).get_anchor()" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
