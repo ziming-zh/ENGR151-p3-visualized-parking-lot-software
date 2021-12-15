@@ -1,3 +1,0 @@
-C:\Users\Ziming\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.4746.93\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\p3_part2.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\p3_part2.dir/objects.a @CMakeFiles\p3_part2.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -Werror -pedantic -Wall -Wextra -Wvla -g -Wl,--whole-archive CMakeFiles\p3_part2.dir/objects.a -Wl,--no-whole-archive -o p3_part2.exe -Wl,--out-implib,libp3_part2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\p3_part2.dir\linklibs.rsp
