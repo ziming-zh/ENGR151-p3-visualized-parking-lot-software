@@ -7,4 +7,4 @@
 Ziming Zhou 521370910142
 
 ## Content
-Please refer to Our [wiki page](https://github.com/ziming-zh/ENGR151-p3-visualized-parking-lot/wiki/Introduction-to-ENGR151-Project-3-%E2%80%90-Park-Management-Software-%E2%80%90-by-pgroup-16) in this repo for detailed instructions.
+Please refer to the [wiki page](https://github.com/ziming-zh/ENGR151-p3-visualized-parking-lot-software/wiki/Guidance-to-Visualized-Park-Management-Software) in this repo for detailed instructions.
